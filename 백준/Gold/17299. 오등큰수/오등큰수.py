@@ -8,13 +8,11 @@ result = [-1]*length
 stack = []
 
 for idx in range(length):
-    cur_num = seq[idx]
     while stack:
+        cur_num = seq[idx]
         top_num = seq[stack[-1]]
         if freq[cur_num] > freq[top_num]:
-            result[stack[-1]] = cur_num
-            stack.pop()
-            continue
+            result[stack.pop()] = cur_num
         else:
             break
     stack.append(idx)
