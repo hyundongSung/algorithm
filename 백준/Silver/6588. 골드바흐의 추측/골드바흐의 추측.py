@@ -8,17 +8,13 @@ while True:
         break
     even_number.append(val)
 
-min_num = min(even_number)
 max_num = max(even_number)
-prime = [True for i in range(max_num + 1)]
+prime = [True for cnt in range(max_num + 1)]
 
 for factor in range(2, int(math.sqrt(max_num)) + 1):
-    if not prime[factor]:
-        continue
-    mult = factor
-    while factor * mult <= max_num:
-        prime[factor * mult] = False
-        mult += 1
+    if prime[factor]:
+        for non_prime in range(factor ** 2, max_num, factor):
+            prime[non_prime] = False
 
 for num in even_number:
     for odd in range(3, num + 1, 2):
