@@ -1,18 +1,24 @@
-from sys import stdin
 from functools import cache
+from sys import stdin
 
 
 @cache
-def count(val, target):
+def count(n, m, target):
     cnt = 0
-    num = target
-    while num <= val:
-        cnt += int(val / num)
-        num *= target
+    div = target
+    while div <= n:
+        cnt += int(n / div)
+        div *= target
+    div = target
+    while div <= n - m:
+        cnt -= int((n - m) / div)
+        div *= target
+    div = target
+    while div <= m:
+        cnt -= int(m / div)
+        div *= target
     return cnt
 
 
 n, m = map(int, stdin.readline().split(' '))
-five_sum = count(n, 5) - count(n - m, 5) - count(m, 5)
-two_sum = count(n, 2) - count(n - m, 2) - count(m, 2)
-print(min(five_sum, two_sum))
+print(min(count(n, m, 5), count(n, m, 2)))
