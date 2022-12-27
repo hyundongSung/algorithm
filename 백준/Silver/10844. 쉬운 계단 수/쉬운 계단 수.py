@@ -7,8 +7,6 @@ mod = 1000000000
 for i in range(10):
     if i > num:
         break
-    if i > 1:
-        d[i][i] = 1
     if i == 1:
         for j in range(1, 10):
             d[1][j] = 1
