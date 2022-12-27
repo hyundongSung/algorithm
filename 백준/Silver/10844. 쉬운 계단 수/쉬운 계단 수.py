@@ -4,12 +4,8 @@ num = int(stdin.readline())
 d = [[0] * 10 for _ in range(num + 1)]
 mod = 1000000000
 
-for i in range(10):
-    if i > num:
-        break
-    if i == 1:
-        for j in range(1, 10):
-            d[1][j] = 1
+for i in range(1, 10):
+    d[1][i] = 1
 
 for n in range(2, num + 1):
     for k in range(0, 10):
